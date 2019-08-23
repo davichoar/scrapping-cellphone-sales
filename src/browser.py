@@ -1,8 +1,9 @@
-import selenium
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
 import pyvirtualdisplay
 
 def create_chrome(hide=False): 
-    options = selenium.webdriver.ChromeOptions()
+    options = webdriver.ChromeOptions()
     #options.add_argument(f'user-agent={user_agent}')
     display = None
     if hide:
@@ -19,5 +20,5 @@ def create_chrome(hide=False):
         # options.add_argument("--disable-browser-side-navigation"); # https://stackoverflow.com/a/49123152/1689770
         # options.add_argument("--disable-gpu"); # https://stackoverflow.com/questions/51959986/how-to-solve-selenium-chromedriver-timed-out-receiving-message-from-renderer-exc
 
-    driver = selenium.webdriver.Chrome(options = options)
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = options)
     return driver
